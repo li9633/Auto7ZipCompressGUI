@@ -1,4 +1,4 @@
-package com.Auto7zip.GUI;
+package com.Auto7zip.ui;
 
 import java.util.ArrayList;
 

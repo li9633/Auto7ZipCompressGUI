@@ -1,8 +1,6 @@
-package com.Auto7zip.GUI;
-
+package com.Auto7zip.ui;
 
 import com.Auto7zip.config.button_config;
-
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
@@ -20,15 +18,15 @@ public class newButton extends Button {
     }
 
     private void setButtonAction() {
-        this.setOnAction(event -> buttonClick(event));
+
     }
 
     public void setButtonSize() {
         this.resize(button_config.getButtonWidth("int"), button_config.getButtonHeight("int"));
     }
 
-    private void buttonClick(ActionEvent event) {
-        System.out.println(event);
+    private void SelectFolder(ActionEvent event) {
+        System.out.println("folder selected");
     }
 
     private void applyDefaultStyle() {
