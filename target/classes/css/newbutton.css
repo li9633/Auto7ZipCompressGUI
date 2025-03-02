@@ -1,0 +1,25 @@
+.newbutton {
+    -fx-background-color: #6789e7;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-padding: 8px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-cursor: hand;
+}
+
+.newbutton:hover {
+    -fx-background-color: #7f9be7;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 3);
+}
+
+.newbutton:pressed {
+    -fx-background-color: #5d77be;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
+}
+
+.newbutton:disabled {
+    -fx-background-color: #cccccc;
+    -fx-text-fill: #666666;
+    -fx-effect: none;
+}
