@@ -1,32 +1,33 @@
 package com.Auto7zip.view;
 
+import java.util.function.Consumer;
+
 import com.Auto7zip.config.button_config;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
-public class newButton extends Button {
-    public newButton(String text) {
+public class StyledButton extends Button {
+    private Consumer<Void> onClickHandler;
+
+    public StyledButton(String text) {
         super(text);
-        setButtonAction();
         applyDefaultStyle();
+
     }
 
-    public newButton() {
-        super();
-        setButtonAction();
-        applyDefaultStyle();
+    public void setClickHandler(Consumer<Void> handler) {
+        this.onClickHandler = handler;
     }
 
-    private void setButtonAction() {
-
+    private void setClickAction() {
+        this.setOnAction(_ -> {
+            if (onClickHandler != null) {
+                onClickHandler.accept(null);
+            }
+        });
     }
 
     public void setButtonSize() {
         this.resize(button_config.getButtonWidth("int"), button_config.getButtonHeight("int"));
-    }
-
-    private void SelectFolder(ActionEvent event) {
-        System.out.println("folder selected");
     }
 
     private void applyDefaultStyle() {

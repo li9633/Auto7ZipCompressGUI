@@ -10,14 +10,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
-public class win_main extends Application {
-    private ArrayList<newButton> buttons = new ArrayList<>();
+public class Win_Main extends Application {
+    private ArrayList<StyledButton> buttons = new ArrayList<>();
 
-    public win_main(String[] args) {
+    public Win_Main(String[] args) {
         launch(args);
     }
 
-    public win_main() {
+    public Win_Main() {
         ;
     }
 
@@ -39,7 +39,7 @@ public class win_main extends Application {
     private void initButton(Stage stage) {
 
         for (int i = 0; i < 4; i++) {
-            buttons.add(new newButton("Uninit Button"));
+            buttons.add(new StyledButton("Uninit Button"));
         }
         FlowPane flowpane = new FlowPane();
         flowpane.setVgap(10);
