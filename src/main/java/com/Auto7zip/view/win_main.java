@@ -2,7 +2,7 @@ package com.Auto7zip.view;
 
 import java.util.ArrayList;
 
-import com.Auto7zip.config.button_config;
+import com.Auto7zip.config.style.ButtonStyleConfig;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -26,7 +26,7 @@ public class Win_Main extends Application {
 
         initWindow(stage);
         initButton(stage);
-        configButton();
+        configButton(stage);
         stage.show();
     }
 
@@ -39,7 +39,7 @@ public class Win_Main extends Application {
     private void initButton(Stage stage) {
 
         for (int i = 0; i < 4; i++) {
-            buttons.add(new StyledButton("Uninit Button"));
+            buttons.add(new StyledButton());
         }
         FlowPane flowpane = new FlowPane();
         flowpane.setVgap(10);
@@ -50,9 +50,12 @@ public class Win_Main extends Application {
         stage.setScene(scene);
     }
 
-    private void configButton() {
-        button_config.getButtonNames().forEach((name) -> {
-            buttons.get(button_config.getButtonNames().indexOf(name)).setText(name);
+    private void configButton(Stage stage) {
+        StyledButton button = new StyledButton();
+        button.setButtonText("Test Button");
+        button.setOnAction(_ -> {
+            button.setbgColor("#8130c4");
+            button.setTextColor("#943636");
         });
     }
 

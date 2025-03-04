@@ -2,16 +2,23 @@ package com.Auto7zip.view;
 
 import java.util.function.Consumer;
 
-import com.Auto7zip.config.button_config;
+
+import com.Auto7zip.config.style.ButtonStyleConfig;
+
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
 
 public class StyledButton extends Button {
     private Consumer<Void> onClickHandler;
+    private SimpleStringProperty bgcolor = new SimpleStringProperty("#6789e7");
+    private SimpleStringProperty textcolor = new SimpleStringProperty("#FFFFFF");
 
-    public StyledButton(String text) {
-        super(text);
+    public StyledButton() {
+        super("Uninit Button");
         applyDefaultStyle();
-
+        setOnAction(null);
+        setStylebinding();
     }
 
     public void setClickHandler(Consumer<Void> handler) {
@@ -27,7 +34,7 @@ public class StyledButton extends Button {
     }
 
     public void setButtonSize() {
-        this.resize(button_config.getButtonWidth("int"), button_config.getButtonHeight("int"));
+        this.resize(ButtonStyleConfig.getButtonWidth(), ButtonStyleConfig.getButtonHeight());
     }
 
     private void applyDefaultStyle() {
@@ -41,15 +48,35 @@ public class StyledButton extends Button {
                     -fx-border-radius: %s;
                 }
                 }""",
-                button_config.getButtonWidth("String"),
-                button_config.getButtonHeight("String"),
-                button_config.getRadius(),
-                button_config.getRadius());
+                ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonWidth()),
+                ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonHeight()),
+                ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonRadius()),
+                ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonRadius()));
         this.getStylesheets().add(
                 "data:text/css;charset=UTF-8," + cssStyle);
-        this.getStyleClass().add("buttonSize");
         this.getStylesheets().add(cssPath);
-        this.getStyleClass().add("newbutton");
+        this.getStyleClass().add("CustomStyle");
+    }
+
+    private void setStylebinding() {
+        styleProperty()
+                .bind(Bindings.createStringBinding(() -> String.format(
+                        "-fx-background-color: %s;" +
+                                "-fx-text-fill: %s",
+                        bgcolor.get(), textcolor.get()),
+                        bgcolor, textcolor));
+    }
+
+    public void setbgColor(String color) {
+        bgcolor.set(color);
+    }
+
+    public void setButtonText(String text) {
+        super.setText(text);
+    }
+
+    public void setTextColor(String color) {
+        textcolor.set(color);
     }
 
 }
