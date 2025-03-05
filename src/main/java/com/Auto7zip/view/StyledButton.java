@@ -2,7 +2,6 @@ package com.Auto7zip.view;
 
 import java.util.function.Consumer;
 
-
 import com.Auto7zip.config.style.ButtonStyleConfig;
 
 import javafx.beans.binding.Bindings;
@@ -11,18 +10,27 @@ import javafx.scene.control.Button;
 
 public class StyledButton extends Button {
     private Consumer<Void> onClickHandler;
-    private SimpleStringProperty bgcolor = new SimpleStringProperty("#6789e7");
-    private SimpleStringProperty textcolor = new SimpleStringProperty("#FFFFFF");
+    private SimpleStringProperty bgcolor = new SimpleStringProperty(ButtonStyleConfig.getButtonBgColor());
+    private SimpleStringProperty textcolor = new SimpleStringProperty(ButtonStyleConfig.getButtonTextColor());
+    private SimpleStringProperty width = new SimpleStringProperty(
+            ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonWidth()));
+    private SimpleStringProperty height = new SimpleStringProperty(
+            ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonHeight()));
+    private SimpleStringProperty radius = new SimpleStringProperty(
+            String.valueOf(ButtonStyleConfig.getButtonRadius()));
+    private SimpleStringProperty fontsize = new SimpleStringProperty(
+            ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonFontSize()));
 
     public StyledButton() {
         super("Uninit Button");
         applyDefaultStyle();
-        setOnAction(null);
+        setClickHandler(null);
         setStylebinding();
     }
 
     public void setClickHandler(Consumer<Void> handler) {
         this.onClickHandler = handler;
+        setClickAction();
     }
 
     private void setClickAction() {
@@ -39,21 +47,6 @@ public class StyledButton extends Button {
 
     private void applyDefaultStyle() {
         String cssPath = getClass().getResource("/css/newButton.css").toExternalForm();
-
-        String cssStyle = String.format("""
-                .buttonSize{
-                    -fx-min-width: %s;
-                    -fx-min-height: %s;
-                    -fx-background-radius: %s;
-                    -fx-border-radius: %s;
-                }
-                }""",
-                ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonWidth()),
-                ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonHeight()),
-                ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonRadius()),
-                ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonRadius()));
-        this.getStylesheets().add(
-                "data:text/css;charset=UTF-8," + cssStyle);
         this.getStylesheets().add(cssPath);
         this.getStyleClass().add("CustomStyle");
     }
@@ -62,9 +55,17 @@ public class StyledButton extends Button {
         styleProperty()
                 .bind(Bindings.createStringBinding(() -> String.format(
                         "-fx-background-color: %s;" +
-                                "-fx-text-fill: %s",
-                        bgcolor.get(), textcolor.get()),
-                        bgcolor, textcolor));
+                                "-fx-text-fill: %s;" +
+                                "-fx-min-width:%s;" +
+                                "-fx-min-height:%s;" +
+                                "-fx-background-radius:%s;" +
+                                "-fx-border-radius:%s;" +
+                                "-fx-font-size:%s;" +
+                                "-fx-text-fill:%s;",
+                        bgcolor.get(),
+                        textcolor.get(),
+                        width.get(), height.get(), radius.get(), radius.get(), fontsize.get(), textcolor.get()),
+                        bgcolor, textcolor, width, height, radius, radius, fontsize, textcolor));
     }
 
     public void setbgColor(String color) {

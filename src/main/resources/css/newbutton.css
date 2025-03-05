@@ -1,9 +1,6 @@
 .CustomStyle {
-    -fx-background-color: #6789e7;
-    -fx-text-fill: white;
     -fx-font-family: "Segoe UI";
-    -fx-font-size: 13px;
-    -fx-padding: 8px 20px;
+    -fx-padding: 4px 10px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
     -fx-cursor: hand;
 }

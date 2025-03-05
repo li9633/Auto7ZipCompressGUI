@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.auto7zip</groupId>
@@ -21,17 +20,22 @@
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId> <!-- 如果使用 FXML 需要此依赖 -->
+            <artifactId>javafx-fxml</artifactId>            <!-- 如果使用 FXML 需要此依赖 -->
             <version>21</version>
             <classifier>win</classifier>
         </dependency>
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.2</version>            <!-- 使用最新稳定版本 -->
+        </dependency>
     </dependencies>
     <build>
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-        </resource>
-    </resources>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -42,7 +46,7 @@
                     <target>23</target>
                     <compilerArgs>
                         <arg>--add-modules</arg>
-                        <arg>javafx.controls,javafx.fxml</arg>
+                        <arg>javafx.controls,javafx.fxml,javafx.graphics,org.controlsfx</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
