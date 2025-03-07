@@ -1,6 +1,6 @@
-package com.Auto7zip;
+package com.auto7zip;
 
-import com.Auto7zip.view.Win_Main;
+import com.auto7zip.view.Win_Main;
 
 public class APP {
     public static void main(String[] args) {

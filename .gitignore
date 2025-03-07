@@ -1,1 +1,30 @@
+# IntelliJ IDEA
+*.iml
+*.class
+out/
+.idea/
+*.iws
+*.ipr
+
+# Java dependencies
 target/
+.buildpath
+.project
+.classpath
+
+# Maven
+.pom.xml.swp
+
+# Gradle
+.build
+/distribution/
+/.gradle/
+/build/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp

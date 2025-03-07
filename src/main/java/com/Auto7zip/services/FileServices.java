@@ -1,7 +1,8 @@
-package com.Auto7zip.services;
+package com.auto7zip.services;
 
 import java.io.File;
-import com.Auto7zip.config.content.ChooserContent;
+
+import com.auto7zip.config.content.ChooserContent;
 
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;

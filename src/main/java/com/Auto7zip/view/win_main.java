@@ -1,10 +1,11 @@
-package com.Auto7zip.view;
+package com.auto7zip.view;
 
 import java.util.ArrayList;
 
-import com.Auto7zip.config.content.ButtonContent;
-import com.Auto7zip.services.FileServices;
+import com.auto7zip.config.content.ButtonContent;
+import com.auto7zip.services.FileServices;
 
+import com.auto7zip.services.ProgramServices;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -57,7 +58,10 @@ public class Win_Main extends Application {
         for (StyledButton b : buttons) {
             b.setButtonText(ButtonContent.getButtonText().get(buttons.indexOf(b)));
         }
-        buttons.get(0).setClickHandler(_ -> FileServices.selectionFolder(MainWindow));
+
+        buttons.get(ButtonContent.getButtonText().indexOf("Exit")).setClickHandler(e -> System.out.println("test"));
+        buttons.get(0).setClickHandler(e -> FileServices.selectionFolder(MainWindow));
+//        buttons.get(3).setClickHandler(e -> ProgramServices.exitProgram());
     }
 
 }

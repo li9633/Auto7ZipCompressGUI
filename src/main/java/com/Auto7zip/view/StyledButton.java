@@ -1,8 +1,8 @@
-package com.Auto7zip.view;
+package com.auto7zip.view;
 
 import java.util.function.Consumer;
 
-import com.Auto7zip.config.style.ButtonStyleConfig;
+import com.auto7zip.config.style.ButtonStyleConfig;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
@@ -34,7 +34,7 @@ public class StyledButton extends Button {
     }
 
     private void setClickAction() {
-        this.setOnAction(_ -> {
+        this.setOnAction(e -> {
             if (onClickHandler != null) {
                 onClickHandler.accept(null);
             }

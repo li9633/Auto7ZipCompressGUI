@@ -1,4 +1,4 @@
-package com.Auto7zip.config.content;
+package com.auto7zip.config.content;
 
 import java.util.Collections;
 import java.util.List;

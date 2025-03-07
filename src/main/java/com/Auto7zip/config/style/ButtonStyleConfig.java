@@ -1,4 +1,4 @@
-package com.Auto7zip.config.style;
+package com.auto7zip.config.style;
 
 public class ButtonStyleConfig {
     private static final int BUTTON_WIDTH = 120;
