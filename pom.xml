@@ -8,6 +8,13 @@
     <artifactId>auto7zip</artifactId>
     <version>1.1-SNAPSHOT</version>
 
+    <repositories>
+        <repository>
+            <id>eclipse</id>
+            <url>https://download.eclipse.org/technology/maven/repository/releases</url>
+        </repository>
+    </repositories>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -34,7 +41,7 @@
         <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
-            <version>11.1.2</version>            <!-- 使用最新稳定版本 -->
+            <version>11.1.2</version>
         </dependency>
     </dependencies>
     <build>

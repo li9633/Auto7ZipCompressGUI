@@ -4,14 +4,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class ButtonContent {
-    private static List<String> BUTTON_TEXT = List.of(
+    private static final List<String> BUTTON_TEXT = List.of(
             "Pick A Folder",
             "Compress",
             "Unified Password",
             "Exit");
 
     public static List<String> getButtonText() {
-        return Collections.unmodifiableList(BUTTON_TEXT);
+        return BUTTON_TEXT;
     }
     
 }

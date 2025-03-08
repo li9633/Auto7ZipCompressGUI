@@ -1,5 +1,6 @@
 package com.auto7zip.view;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import com.auto7zip.config.style.ButtonStyleConfig;
@@ -25,7 +26,7 @@ public class StyledButton extends Button {
         super("Uninit Button");
         applyDefaultStyle();
         setClickHandler(null);
-        setStylebinding();
+        setStyleBinding();
     }
 
     public void setClickHandler(Consumer<Void> handler) {
@@ -46,12 +47,12 @@ public class StyledButton extends Button {
     }
 
     private void applyDefaultStyle() {
-        String cssPath = getClass().getResource("/css/newButton.css").toExternalForm();
+        String cssPath = Objects.requireNonNull(getClass().getResource("/css/CustomButton.css")).toExternalForm();
         this.getStylesheets().add(cssPath);
         this.getStyleClass().add("CustomStyle");
     }
 
-    private void setStylebinding() {
+    private void setStyleBinding() {
         styleProperty()
                 .bind(Bindings.createStringBinding(() -> String.format(
                         "-fx-background-color: %s;" +

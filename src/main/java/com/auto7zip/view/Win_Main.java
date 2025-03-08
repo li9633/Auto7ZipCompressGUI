@@ -1,11 +1,16 @@
 package com.auto7zip.view;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
+import com.auto7zip.APP;
 import com.auto7zip.config.content.ButtonContent;
+import com.auto7zip.model.AppStatus;
 import com.auto7zip.services.FileServices;
 
 import com.auto7zip.services.ProgramServices;
+import com.auto7zip.util.LanguageManager;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -16,6 +21,7 @@ public class Win_Main extends Application {
     private ArrayList<StyledButton> buttons = new ArrayList<>();
     private Stage MainWindow;
     private Scene primaryWidget;
+    ResourceBundle bundle = null;
 
     public Win_Main(String[] args) {
         launch(args);
@@ -28,6 +34,7 @@ public class Win_Main extends Application {
     @Override
     public void start(Stage stage) {
         this.MainWindow = stage;
+        initLanguage();
         initWindow();
         initButton();
         configButton();
@@ -35,7 +42,7 @@ public class Win_Main extends Application {
     }
 
     private void initWindow() {
-        MainWindow.setTitle("Auto7zipCompress");
+        MainWindow.setTitle(bundle.getString("app.title"));
         MainWindow.setWidth(800);
         MainWindow.setHeight(400);
     }
@@ -55,13 +62,19 @@ public class Win_Main extends Application {
     }
 
     private void configButton() {
-        for (StyledButton b : buttons) {
-            b.setButtonText(ButtonContent.getButtonText().get(buttons.indexOf(b)));
-        }
+//        for (StyledButton b : buttons) {
+//            b.setButtonText(ButtonContent.getButtonText().get(buttons.indexOf(b)));
+//        }
 
-        buttons.get(ButtonContent.getButtonText().indexOf("Exit")).setClickHandler(e -> System.out.println("test"));
+        buttons.get(ButtonContent.getButtonText().indexOf(bundle.getString("button.exit.text"))).setClickHandler(e -> ProgramServices.exitProgram());
         buttons.get(0).setClickHandler(e -> FileServices.selectionFolder(MainWindow));
-//        buttons.get(3).setClickHandler(e -> ProgramServices.exitProgram());
     }
+
+    private void initLanguage() {
+//        this.bundle = LanguageManager.getResourceBundle(Locale.getDefault().getLanguage());
+        AppStatus.setResourceBundle(LanguageManager.getResourceBundle("en"));
+        this.bundle = AppStatus.getResourceBundle();
+    }
+
 
 }
