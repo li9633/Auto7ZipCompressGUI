@@ -4,12 +4,13 @@ import java.io.File;
 
 import com.auto7zip.config.content.ChooserContent;
 
+import com.auto7zip.model.AppStatus;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
 
 public class FileServices {
     private FileServices() {
-        ;
+
     }
 
     public static void selectionFolder(Window MainWindow) {
@@ -18,7 +19,7 @@ public class FileServices {
 
         File selectedDirectory = dirChooser.showDialog(MainWindow);
         if (selectedDirectory != null) {
-        System.out.println(selectedDirectory.getAbsolutePath());
+            AppStatus.setSelectFolder(selectedDirectory.getAbsolutePath());
         }
 
     }

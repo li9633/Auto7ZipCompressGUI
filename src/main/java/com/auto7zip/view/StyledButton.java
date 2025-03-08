@@ -7,10 +7,12 @@ import com.auto7zip.config.style.ButtonStyleConfig;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 public class StyledButton extends Button {
-    private Consumer<Void> onClickHandler;
+    private EventHandler<ActionEvent> onClickHandler;
     private SimpleStringProperty bgcolor = new SimpleStringProperty(ButtonStyleConfig.getButtonBgColor());
     private SimpleStringProperty textcolor = new SimpleStringProperty(ButtonStyleConfig.getButtonTextColor());
     private SimpleStringProperty width = new SimpleStringProperty(
@@ -29,17 +31,9 @@ public class StyledButton extends Button {
         setStyleBinding();
     }
 
-    public void setClickHandler(Consumer<Void> handler) {
+    public void setClickHandler(EventHandler<ActionEvent> handler) {
         this.onClickHandler = handler;
-        setClickAction();
-    }
-
-    private void setClickAction() {
-        this.setOnAction(e -> {
-            if (onClickHandler != null) {
-                onClickHandler.accept(null);
-            }
-        });
+        setOnAction(handler);
     }
 
     public void setButtonSize() {
@@ -55,17 +49,17 @@ public class StyledButton extends Button {
     private void setStyleBinding() {
         styleProperty()
                 .bind(Bindings.createStringBinding(() -> String.format(
-                        "-fx-background-color: %s;" +
-                                "-fx-text-fill: %s;" +
-                                "-fx-min-width:%s;" +
-                                "-fx-min-height:%s;" +
-                                "-fx-background-radius:%s;" +
-                                "-fx-border-radius:%s;" +
-                                "-fx-font-size:%s;" +
-                                "-fx-text-fill:%s;",
-                        bgcolor.get(),
-                        textcolor.get(),
-                        width.get(), height.get(), radius.get(), radius.get(), fontsize.get(), textcolor.get()),
+                                "-fx-background-color: %s;" +
+                                        "-fx-text-fill: %s;" +
+                                        "-fx-min-width:%s;" +
+                                        "-fx-min-height:%s;" +
+                                        "-fx-background-radius:%s;" +
+                                        "-fx-border-radius:%s;" +
+                                        "-fx-font-size:%s;" +
+                                        "-fx-text-fill:%s;",
+                                bgcolor.get(),
+                                textcolor.get(),
+                                width.get(), height.get(), radius.get(), radius.get(), fontsize.get(), textcolor.get()),
                         bgcolor, textcolor, width, height, radius, radius, fontsize, textcolor));
     }
 
