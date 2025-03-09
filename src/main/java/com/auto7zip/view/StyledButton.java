@@ -25,7 +25,7 @@ public class StyledButton extends Button {
             ButtonStyleConfig.getStyleForStyle(ButtonStyleConfig.getButtonFontSize()));
 
     public StyledButton() {
-        super("Uninit Button");
+        super();
         applyDefaultStyle();
         setClickHandler(null);
         setStyleBinding();

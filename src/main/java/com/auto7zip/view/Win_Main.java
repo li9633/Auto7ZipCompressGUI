@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 public class Win_Main extends Application {
     private final ArrayList<StyledButton> buttons = new ArrayList<>();
-    private Stage MainWindow;
+    private static Stage MainWindow;
     private Scene primaryWidget;
     ResourceBundle bundle = null;
     private Map<String, Integer> buttonNameToIndex;
@@ -92,8 +92,7 @@ public class Win_Main extends Application {
     }
 
     public static Stage getMainWindow() {
-//        return MainWindow;
-        return null;
+        return MainWindow;
     }
 
 }
