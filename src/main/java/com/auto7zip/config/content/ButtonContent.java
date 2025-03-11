@@ -2,7 +2,6 @@ package com.auto7zip.config.content;
 
 import com.auto7zip.model.AppStatus;
 
-import java.util.Collections;
 import java.util.List;
 
 public class ButtonContent {
