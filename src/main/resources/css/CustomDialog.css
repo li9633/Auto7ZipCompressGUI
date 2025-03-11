@@ -1,0 +1,9 @@
+.CustomDialog {
+    -fx-font-family: "Microsoft YaHei UI";
+    -fx-font-size: 12px;
+    -fx-background-color: #ff0000;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #e0e0e0;
+    -fx-padding: 4px 10px;
+}

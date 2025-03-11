@@ -3,21 +3,19 @@ package com.auto7zip.controller;
 import com.auto7zip.config.content.DiglogContent;
 import com.auto7zip.model.AppStatus;
 import com.auto7zip.services.FileServices;
-import com.auto7zip.view.StyledButton;
 import com.auto7zip.view.Win_Main;
+import com.auto7zip.view.dialog.CustomDialog;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.stage.Stage;
 
 public class ButtonController {
     private static final Stage MainWindow = Win_Main.getMainWindow();
 
     public static void selectFolderButtonClick(ActionEvent event) {
-
-        Dialog<String> dialog = new Dialog<>();
+        CustomDialog<String> dialog = new CustomDialog<>();
         dialog.setTitle(DiglogContent.getDialogTitle());
-        dialog.setHeaderText("dialog.header");
+        dialog.setHeaderText(DiglogContent.getDialogHeader());
 
         ButtonType buttonType = new ButtonType("testOptions");
         dialog.getDialogPane().getButtonTypes().addAll(buttonType);

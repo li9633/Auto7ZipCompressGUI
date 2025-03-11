@@ -25,8 +25,7 @@ public class FileServices {
 
         List<File> selectedDirectory = dirChooser.showOpenMultipleDialog(MainWindow);
         if (selectedDirectory != null) {
-            selectedDirectory = selectedDirectory.stream().filter(File::isDirectory).collect(Collectors.toList());
-            AppStatus.setSelectFolder(selectedDirectory);
+            AppStatus.setSelectFolder(selectedDirectory.stream().filter(File::isDirectory).collect(Collectors.toList()));
         }
 
     }
@@ -39,8 +38,7 @@ public class FileServices {
                 , "*.*"));
         List<File> selectedFile = fileChooser.showOpenMultipleDialog(MainWindow);
         if (selectedFile != null) {
-            selectedFile = selectedFile.stream().filter(File::isFile).collect(Collectors.toList());
-            AppStatus.setSelectFile(selectedFile);
+            AppStatus.setSelectFile(selectedFile.stream().filter(File::isFile).collect(Collectors.toList()));
         }
 
     }

@@ -10,7 +10,7 @@ public class DiglogContent {
     public static String getDialogTitle() {
         return AppStatus.getResourceBundle().getString("dialog.title");
     }
-    public static String getDialoHeader() {
+    public static String getDialogHeader() {
         return AppStatus.getResourceBundle().getString("dialog.header");
     }
 }
