@@ -41,8 +41,7 @@ public class StyledButton extends Button {
     }
 
     private void applyDefaultStyle() {
-        String cssPath = Objects.requireNonNull(getClass().getResource("/css/CustomButton.css")).toExternalForm();
-        this.getStylesheets().add(cssPath);
+        this.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/CustomButton.css")).toExternalForm());
         this.getStyleClass().add("CustomStyle");
     }
 

@@ -3,24 +3,24 @@ package com.auto7zip.controller;
 import com.auto7zip.config.content.DiglogContent;
 import com.auto7zip.model.AppStatus;
 import com.auto7zip.services.FileServices;
+import com.auto7zip.view.StyledButton;
 import com.auto7zip.view.Win_Main;
 import com.auto7zip.view.dialog.CustomDialog;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
+import java.util.Optional;
+
 public class ButtonController {
     private static final Stage MainWindow = Win_Main.getMainWindow();
 
     public static void selectFolderButtonClick(ActionEvent event) {
-        CustomDialog<String> dialog = new CustomDialog<>();
+        CustomDialog<Void> dialog = new CustomDialog<>();
         dialog.setTitle(DiglogContent.getDialogTitle());
         dialog.setHeaderText(DiglogContent.getDialogHeader());
-
-        ButtonType buttonType = new ButtonType("testOptions");
-        dialog.getDialogPane().getButtonTypes().addAll(buttonType);
         dialog.showAndWait();
-        FileServices.selectionFolder(MainWindow);
+//        FileServices.selectionFolder(MainWindow);
     }
 
     public static void compressButtonClick(ActionEvent event) {
