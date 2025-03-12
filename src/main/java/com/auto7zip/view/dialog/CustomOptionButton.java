@@ -10,12 +10,14 @@ public class CustomOptionButton<T> extends StyledButton {
 
     public CustomOptionButton() {
         super();
+        initResultHandling();
     }
 
 
     public CustomOptionButton(String text) {
         super();
         super.setButtonText(text);
+        initResultHandling();
     }
 
     private void initResultHandling() {
@@ -32,5 +34,9 @@ public class CustomOptionButton<T> extends StyledButton {
 
     public void setResultHandler(Consumer<T> handler) {
         this.resultConsumer = handler;
+    }
+
+    public T getResultValue() {
+        return resultValue;
     }
 }

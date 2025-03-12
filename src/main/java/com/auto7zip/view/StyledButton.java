@@ -1,7 +1,6 @@
 package com.auto7zip.view;
 
 import java.util.Objects;
-import java.util.function.Consumer;
 
 import com.auto7zip.config.style.ButtonStyleConfig;
 
@@ -36,8 +35,9 @@ public class StyledButton extends Button {
         setOnAction(handler);
     }
 
-    public void setButtonSize() {
-        this.resize(ButtonStyleConfig.getButtonWidth(), ButtonStyleConfig.getButtonHeight());
+    public void setButtonSize(int width, int height) {
+        this.width.set(ButtonStyleConfig.getStyleForStyle(width));
+        this.height.set(ButtonStyleConfig.getStyleForStyle(height));
     }
 
     private void applyDefaultStyle() {
@@ -50,8 +50,8 @@ public class StyledButton extends Button {
                 .bind(Bindings.createStringBinding(() -> String.format(
                                 "-fx-background-color: %s;" +
                                         "-fx-text-fill: %s;" +
-                                        "-fx-min-width:%s;" +
-                                        "-fx-min-height:%s;" +
+                                        "-fx-pref-width:%s;" +
+                                        "-fx-pref-height:%s;" +
                                         "-fx-background-radius:%s;" +
                                         "-fx-border-radius:%s;" +
                                         "-fx-font-size:%s;" +

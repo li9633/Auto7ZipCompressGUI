@@ -3,24 +3,38 @@ package com.auto7zip.controller;
 import com.auto7zip.config.content.DiglogContent;
 import com.auto7zip.model.AppStatus;
 import com.auto7zip.services.FileServices;
-import com.auto7zip.view.StyledButton;
 import com.auto7zip.view.Win_Main;
 import com.auto7zip.view.dialog.CustomDialog;
+import com.auto7zip.view.dialog.CustomOptionButton;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-
-import java.util.Optional;
 
 public class ButtonController {
     private static final Stage MainWindow = Win_Main.getMainWindow();
 
     public static void selectFolderButtonClick(ActionEvent event) {
-        CustomDialog<Void> dialog = new CustomDialog<>();
+        CustomDialog<String> dialog = new CustomDialog<>();
         dialog.setTitle(DiglogContent.getDialogTitle());
-        dialog.setHeaderText(DiglogContent.getDialogHeader());
-        dialog.showAndWait();
-//        FileServices.selectionFolder(MainWindow);
+        dialog.setDialogContentText(DiglogContent.getDialogHeader());
+        dialog.setDefaultButtonText(CustomDialog.StyleButtonOk, DiglogContent.getDialogButtonSelectionSearch());
+        dialog.setDefaultButtonText(CustomDialog.StyleButtonCancel, DiglogContent.getDialogButtonSelectionFiles());
+        dialog.setButtons(new CustomOptionButton<>(DiglogContent.getDialogButtonSelectionFolder()));
+        dialog.setButtons(new CustomOptionButton<>(DiglogContent.getDialogButtonDefaultCancelText()));
+
+        dialog.showAndWait().ifPresent(result -> {
+            if (result.equals(DiglogContent.getDialogButtonSelectionSearch())) {
+                FileServices.searchFolder(MainWindow);
+            }
+            if (result.equals(DiglogContent.getDialogButtonSelectionFiles())) {
+                FileServices.selectionFile(MainWindow);
+            }
+            if (result.equals(DiglogContent.getDialogButtonSelectionFolder())) {
+                FileServices.selectionFolder(MainWindow);
+            }
+            if (result.equals(DiglogContent.getDialogButtonDefaultCancelText())) {
+                ;
+            }
+        });
     }
 
     public static void compressButtonClick(ActionEvent event) {

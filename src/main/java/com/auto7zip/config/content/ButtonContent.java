@@ -24,4 +24,8 @@ public class ButtonContent {
         return BUTTON_TEXT_OPTIONS;
     }
 
+    public static String getUninitButtonText() {
+        return AppStatus.getResourceBundle().getString("button.init.text");
+    }
+
 }

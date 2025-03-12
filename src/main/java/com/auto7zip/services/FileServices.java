@@ -21,7 +21,7 @@ public class FileServices {
         dirChooser.setTitle(ChooserContent.getChooserTile());
         dirChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(
                 ChooserContent.getChooserFilterFolder()
-                , "*.*"));
+                , "*."));
 
         List<File> selectedDirectory = dirChooser.showOpenMultipleDialog(MainWindow);
         if (selectedDirectory != null) {
