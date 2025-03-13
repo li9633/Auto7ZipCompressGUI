@@ -4,7 +4,7 @@ public class ButtonStyleConfig {
     private static int BUTTON_WIDTH = 120;
     private static int BUTTON_HEIGHT = 30;
     private static final int RADIUS = 10;
-    private static final int BUTTON_FONT_SIZE = 13;
+    private static final int BUTTON_FONT_SIZE = 12;
     private static final String BUTTON_TEXT_COLOR = "#ffffff";
     private static final String BUTTON_BG_COLOR = "#6789e7";
 

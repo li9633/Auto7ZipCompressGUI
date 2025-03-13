@@ -10,6 +10,7 @@ import com.auto7zip.model.AppStatus;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import org.controlsfx.control.GridView;
 
 public class FileServices {
     private FileServices() {
@@ -17,16 +18,21 @@ public class FileServices {
     }
 
     public static void selectionFolder(Window MainWindow) {
-        FileChooser dirChooser = new FileChooser();
-        dirChooser.setTitle(ChooserContent.getChooserTile());
-        dirChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(
-                ChooserContent.getChooserFilterFolder()
-                , "*."));
+//        FileChooser dirChooser = new FileChooser();
+//        dirChooser.setTitle(ChooserContent.getChooserTile());
+//        dirChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(
+//                ChooserContent.getChooserFilterFolder()
+//                , "*."));
+//
+//        List<File> selectedDirectory = dirChooser.showOpenMultipleDialog(MainWindow);
+//        if (selectedDirectory != null) {
+//            AppStatus.setSelectFolder(selectedDirectory.stream().filter(File::isDirectory).collect(Collectors.toList()));
+//        }
 
-        List<File> selectedDirectory = dirChooser.showOpenMultipleDialog(MainWindow);
-        if (selectedDirectory != null) {
-            AppStatus.setSelectFolder(selectedDirectory.stream().filter(File::isDirectory).collect(Collectors.toList()));
-        }
+        GridView<File> dirChooser = new GridView<>();
+        dirChooser.setCellWidth(200);
+        dirChooser.setCellHeight(400);
+
 
     }
 
@@ -50,5 +56,6 @@ public class FileServices {
         if (selectedDirectory != null) {
             AppStatus.setSearchFolder(selectedDirectory.getAbsolutePath());
         }
+
     }
 }

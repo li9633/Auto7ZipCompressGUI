@@ -100,14 +100,20 @@ public class CustomDialog<T> extends Dialog<T> {
     }
 
 
-    public void setButtons(CustomOptionButton<String> st) {
+    public void setButtons(CustomOptionButton<String> st, boolean haveResultHandler) {
         buttonContainer.getChildren().add(st);
         defaultButtons.add(st);
         defaultButtons.get(defaultButtons.size() - 1).setResultValue(st.getText());
         defaultButtons.get(defaultButtons.size() - 1).setButtonSize(80, 20);
-        defaultButtons.get(defaultButtons.size() - 1).setResultHandler(event -> {
-            this.setResult((T) st.getResultValue());
-            this.close();
-        });
+        if (haveResultHandler) {
+            defaultButtons.get(defaultButtons.size() - 1).setResultHandler(event -> {
+                this.setResult((T) st.getResultValue());
+                this.close();
+            });
+        } else {
+            defaultButtons.get(defaultButtons.size() - 1).setResultHandler(event -> {
+//                this.setResult((T) st.getResultValue());
+            });
+        }
     }
 }

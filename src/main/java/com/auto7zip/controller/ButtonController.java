@@ -18,8 +18,8 @@ public class ButtonController {
         dialog.setDialogContentText(DiglogContent.getDialogHeader());
         dialog.setDefaultButtonText(CustomDialog.StyleButtonOk, DiglogContent.getDialogButtonSelectionSearch());
         dialog.setDefaultButtonText(CustomDialog.StyleButtonCancel, DiglogContent.getDialogButtonSelectionFiles());
-        dialog.setButtons(new CustomOptionButton<>(DiglogContent.getDialogButtonSelectionFolder()));
-        dialog.setButtons(new CustomOptionButton<>(DiglogContent.getDialogButtonDefaultCancelText()));
+        dialog.setButtons(new CustomOptionButton<>(DiglogContent.getDialogButtonSelectionFolder()), false);
+        dialog.setButtons(new CustomOptionButton<>(DiglogContent.getDialogButtonDefaultCancelText()), true);
 
         dialog.showAndWait().ifPresent(result -> {
             if (result.equals(DiglogContent.getDialogButtonSelectionSearch())) {
@@ -30,9 +30,6 @@ public class ButtonController {
             }
             if (result.equals(DiglogContent.getDialogButtonSelectionFolder())) {
                 FileServices.selectionFolder(MainWindow);
-            }
-            if (result.equals(DiglogContent.getDialogButtonDefaultCancelText())) {
-                ;
             }
         });
     }
