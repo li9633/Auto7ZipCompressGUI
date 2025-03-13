@@ -8,6 +8,7 @@ import com.auto7zip.view.dialog.CustomDialog;
 import com.auto7zip.view.dialog.CustomOptionButton;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class ButtonController {
     private static final Stage MainWindow = Win_Main.getMainWindow();
@@ -20,6 +21,18 @@ public class ButtonController {
         dialog.setDefaultButtonText(CustomDialog.StyleButtonCancel, DiglogContent.getDialogButtonSelectionFiles());
         dialog.setButtons(new CustomOptionButton<>(DiglogContent.getDialogButtonSelectionFolder()), false);
         dialog.setButtons(new CustomOptionButton<>(DiglogContent.getDialogButtonDefaultCancelText()), true);
+
+        dialog.getDefaultButton(DiglogContent.getDialogButtonSelectionFolder()).setResultHandler((result) -> {
+            System.out.println("result:" + result);
+            dialog.toDisableButtons(true);
+            if (FileServices.selectionFolder(MainWindow)) {
+                dialog.setResult(result);
+                dialog.close();
+            } else {
+                dialog.toDisableButtons(false);
+            }
+        });
+
 
         dialog.showAndWait().ifPresent(result -> {
             if (result.equals(DiglogContent.getDialogButtonSelectionSearch())) {

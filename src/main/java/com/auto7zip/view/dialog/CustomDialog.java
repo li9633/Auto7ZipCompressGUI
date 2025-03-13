@@ -1,6 +1,7 @@
 package com.auto7zip.view.dialog;
 
 import com.auto7zip.config.content.ButtonContent;
+import com.auto7zip.model.AppStatus;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Dialog;
@@ -45,6 +46,12 @@ public class CustomDialog<T> extends Dialog<T> {
         rootpanel.setTop(labelpanel);
     }
 
+    public void toDisableButtons(boolean status) {
+        for (CustomOptionButton<String> button : defaultButtons) {
+            button.setDisable(status);
+        }
+    }
+
     private void setDefaultButtons() {
         int count = 0;
         for (CustomOptionButton<String> button : defaultButtons) {
@@ -68,6 +75,16 @@ public class CustomDialog<T> extends Dialog<T> {
 
     public ArrayList<CustomOptionButton<String>> getDefaultButtons() {
         return defaultButtons;
+    }
+
+    public CustomOptionButton<String> getDefaultButton(String text) {
+        for (CustomOptionButton<String> button : defaultButtons) {
+            if (button.getText().equals(text)) {
+                return button;
+            }
+        }
+
+        return null;
     }
 
     public void CleanButtons() {
@@ -111,9 +128,9 @@ public class CustomDialog<T> extends Dialog<T> {
                 this.close();
             });
         } else {
-            defaultButtons.get(defaultButtons.size() - 1).setResultHandler(event -> {
-//                this.setResult((T) st.getResultValue());
-            });
+//            defaultButtons.get(defaultButtons.size() - 1).setResultHandler(event -> {
+//            });
         }
+
     }
 }

@@ -16,7 +16,7 @@
 }
 
 .CustomStyle:disabled {
-    -fx-background-color: #eb0000;
+    -fx-background-color: #dc1515;
     -fx-text-fill: #666666;
     -fx-effect: none;
 }
